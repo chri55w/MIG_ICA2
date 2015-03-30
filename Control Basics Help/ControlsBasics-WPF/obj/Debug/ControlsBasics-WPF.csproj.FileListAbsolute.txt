@@ -23,3 +23,12 @@ C:\Users\Chris\Desktop\ControlsBasics-WPF\obj\Debug\Microsoft.Samples.Kinect.Con
 C:\Users\Chris\Desktop\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF.csproj.GenerateResource.Cache
 C:\Users\Chris\Desktop\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF.exe
 C:\Users\Chris\Desktop\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF.pdb
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF.exe
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF.pdb
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF.csprojResolveAssemblyReference.cache
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\SelectionDisplay.baml
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\App.baml
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\SelectionDisplay.g.cs
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\App.g.cs
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF_MarkupCompile.cache
