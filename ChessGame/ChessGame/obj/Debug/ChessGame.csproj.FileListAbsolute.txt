@@ -30,3 +30,16 @@ C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame_MarkupCo
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.g.resources
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.Properties.Resources.resources
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.csproj.GenerateResource.Cache
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\bin\Debug\ChessGame.exe.config
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.exe
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.pdb
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\bin\Debug\ChessGame.exe
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\bin\Debug\ChessGame.pdb
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.csprojResolveAssemblyReference.cache
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\MainWindow.baml
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\MainWindow.g.cs
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\App.g.cs
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame_MarkupCompile.cache
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.g.resources
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.Properties.Resources.resources
+C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.csproj.GenerateResource.Cache

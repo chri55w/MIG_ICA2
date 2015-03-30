@@ -3,41 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:k="http://schemas.microsoft.com/kinect/2013"
         Title="MainWindow" Height="820" Width="600">
-
-
-    <WrapPanel>
-        <Grid Grid.Row="0"  Margin="230 0 10 20" Name="kinectViewGrid">
-            <!--<k:KinectUserViewer k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" />-->
-            <k:KinectSensorChooserUI HorizontalAlignment="Center" VerticalAlignment="Top" Name="sensorChooserUi" />
-            <k:KinectUserViewer VerticalAlignment="Top" HorizontalAlignment="Center" k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="100" />
-        </Grid>
-        <k:KinectRegion Grid.Row="1" x:Name="kinectRegion">
-            <Grid x:Name="kinectRegionGrid">
-                <Canvas HorizontalAlignment="Left" Height="550" Margin="10,10,0,0" VerticalAlignment="Top" Width="572">
-                    <Grid Height="560" Width="560" ShowGridLines="True" Canvas.Left="5" Canvas.Top="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="70" />
-                            <ColumnDefinition Width="70" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="70" />
-                            <RowDefinition Height="70" />
-                            <RowDefinition Height="70" />
-                            <RowDefinition Height="70" />
-                            <RowDefinition Height="70" />
-                            <RowDefinition Height="70" />
-                            <RowDefinition Height="70" />
-                            <RowDefinition Height="70" />
-                        </Grid.RowDefinitions>
-                    </Grid>
-                </Canvas>
-            </Grid>
+    <Grid>
+        <k:KinectSensorChooserUI HorizontalAlignment="Center" VerticalAlignment="Top" Name="sensorChooserUi" />
+        <k:KinectUserViewer VerticalAlignment="Top" HorizontalAlignment="Center" k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="100" UserColoringMode="Manual" />
+        <k:KinectRegion Name="kinectRegion">
         </k:KinectRegion>
-    </WrapPanel>
+    </Grid>
 </Window>
