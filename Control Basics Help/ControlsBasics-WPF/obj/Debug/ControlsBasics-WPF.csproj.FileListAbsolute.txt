@@ -32,3 +32,5 @@ C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug
 C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\App.g.cs
 C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Chris\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF_MarkupCompile.cache
+C:\Users\n3035136\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF.exe
+C:\Users\n3035136\Desktop\MIG_ICA2\Control Basics Help\ControlsBasics-WPF\obj\Debug\ControlsBasics-WPF.pdb
