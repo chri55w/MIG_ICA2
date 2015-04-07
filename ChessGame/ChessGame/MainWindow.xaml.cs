@@ -17,7 +17,6 @@ using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 using Microsoft.Kinect.Toolkit.Controls;
 
-
 using System.Globalization;
 
 
@@ -33,12 +32,6 @@ namespace ChessGame {
             InitializeComponent();
             Loaded += OnLoaded;
 
-            for (var index = 0; index < 5; ++index)
-            {
-                var button = new KinectTileButton { Label = (index + 1).ToString(CultureInfo.CurrentCulture) };
-                this.wrapPanel.Children.Add(button);
-                
-            }
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
