@@ -47,6 +47,10 @@ namespace ChessGame {
 
             Extensions.SetIsHandOver(buttonA, true);
 
+            kinectHoverButton kinectHoverButtonA = new kinectHoverButton();
+
+            buttonStack.Children.Add(kinectHoverButtonA);
+
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
