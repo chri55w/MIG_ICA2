@@ -1,6 +1,7 @@
 ﻿<Application x:Class="ChessGame.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ext="clr-namespace:ChessGame"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
@@ -33,6 +34,16 @@
                                 <Setter Property="Rectangle.Height" TargetName="outerRectangle" Value="70"/>
                                 <Setter Property="Rectangle.Margin" TargetName="outerRectangle" Value="0"/>
                             </Trigger>
+                            <DataTrigger Binding="{Binding Path=(ext:Extensions.IsHandOver), RelativeSource={RelativeSource Self}}" Value="True">
+                                <Setter Property="Rectangle.Width" TargetName="outerRectangle" Value="210"/>
+                                <Setter Property="Rectangle.Height" TargetName="outerRectangle" Value="70"/>
+                                <Setter Property="Rectangle.Margin" TargetName="outerRectangle" Value="0"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=(ext:Extensions.IsHandOver), RelativeSource={RelativeSource Self}}" Value="False">
+                                <Setter Property="Rectangle.Width" TargetName="outerRectangle" Value="200"/>
+                                <Setter Property="Rectangle.Height" TargetName="outerRectangle" Value="60"/>
+                                <Setter Property="Rectangle.Margin" TargetName="outerRectangle" Value="10"/>
+                            </DataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>

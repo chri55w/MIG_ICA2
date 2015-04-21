@@ -21,16 +21,31 @@ using System.Globalization;
 
 
 namespace ChessGame {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
+    public class Extensions
+    {
+        public static readonly DependencyProperty IsHandOverProperty = DependencyProperty.RegisterAttached("IsHandOver", typeof(bool), typeof(Extensions), new PropertyMetadata(default(bool)));
+
+        public static void SetIsHandOver(UIElement element, bool value)
+        {
+            element.SetValue(IsHandOverProperty, value);
+        }
+
+        public static bool GetIsHandOver(UIElement element)
+        {
+            return (bool)element.GetValue(IsHandOverProperty);
+        }
+    }
     public partial class MainWindow : Window {
 
         private KinectSensorChooser sensorChooser;
 
-        public MainWindow() {
+        public MainWindow()
+        {
             InitializeComponent();
             Loaded += OnLoaded;
+
+            Extensions.SetIsHandOver(buttonA, true);
 
         }
 
@@ -40,6 +55,7 @@ namespace ChessGame {
             this.sensorChooserUi.KinectSensorChooser = this.sensorChooser;
             this.sensorChooser.Start();
         }
+
         private void SensorChooserOnKinectChanged(object sender, KinectChangedEventArgs args) {
             bool error = false;
             if (args.OldSensor != null) {

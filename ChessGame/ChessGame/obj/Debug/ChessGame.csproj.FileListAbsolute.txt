@@ -45,3 +45,5 @@ C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessG
 C:\Users\n3035136\Documents\GitHub\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.csproj.GenerateResource.Cache
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame_MarkupCompile.lref
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\App.baml
+C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\App.baml
+C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame_MarkupCompile.lref

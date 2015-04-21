@@ -10,7 +10,7 @@
         <k:KinectRegion Name="kinectRegion" Margin="10">
             <Grid>
                 <Image Source="ChessGame/imgs/Title.png" Margin="146,69,135,520"/>
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="buttonStack">
                     <Button x:Name="buttonA">Begin!</Button>
                     <Button>Instructions</Button>
                     <Button>Exit</Button>
