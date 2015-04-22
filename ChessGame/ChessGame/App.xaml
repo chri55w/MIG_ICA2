@@ -16,38 +16,7 @@
             <Setter Property="Width" Value="210" />
             <Setter Property="Height" Value="70" />
             <Setter Property="Margin" Value="10" />
-            <Setter Property="Template">
-                <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                                <!-- Outer Rectangle with rounded corners. -->
-                                <Rectangle x:Name="outerRectangle" VerticalAlignment="Stretch" StrokeThickness="5" Fill="WhiteSmoke" RadiusX="2" RadiusY="2" Width="200" Height="60" Margin="5"/>
-
-                                <!-- Present Content (text) of the button. -->
-                                <DockPanel Name="myContentPresenterDockPanel">
-                                    <ContentPresenter x:Name="myContentPresenter" Margin="20" Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" TextBlock.TextAlignment="Center" TextBlock.FontSize="16" TextBlock.FontFamily="Candara"/>
-                                </DockPanel>
-                            </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Rectangle.Width" TargetName="outerRectangle" Value="210"/>
-                                <Setter Property="Rectangle.Height" TargetName="outerRectangle" Value="70"/>
-                                <Setter Property="Rectangle.Margin" TargetName="outerRectangle" Value="0"/>
-                            </Trigger>
-                            <DataTrigger Binding="{Binding Path=(ext:Extensions.IsHandOver), RelativeSource={RelativeSource Self}}" Value="True">
-                                <Setter Property="Rectangle.Width" TargetName="outerRectangle" Value="210"/>
-                                <Setter Property="Rectangle.Height" TargetName="outerRectangle" Value="70"/>
-                                <Setter Property="Rectangle.Margin" TargetName="outerRectangle" Value="0"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=(ext:Extensions.IsHandOver), RelativeSource={RelativeSource Self}}" Value="False">
-                                <Setter Property="Rectangle.Width" TargetName="outerRectangle" Value="200"/>
-                                <Setter Property="Rectangle.Height" TargetName="outerRectangle" Value="60"/>
-                                <Setter Property="Rectangle.Margin" TargetName="outerRectangle" Value="10"/>
-                            </DataTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            
         </Style>
 
     </Application.Resources>

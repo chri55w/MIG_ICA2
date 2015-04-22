@@ -47,3 +47,4 @@ C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame_MarkupCo
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\App.baml
 C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\App.baml
 C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame_MarkupCompile.lref
+C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\GeneratedInternalTypeHelper.g.cs

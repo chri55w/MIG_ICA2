@@ -21,36 +21,39 @@ using System.Globalization;
 
 
 namespace ChessGame {
-
-    public class Extensions
-    {
-        public static readonly DependencyProperty IsHandOverProperty = DependencyProperty.RegisterAttached("IsHandOver", typeof(bool), typeof(Extensions), new PropertyMetadata(default(bool)));
-
-        public static void SetIsHandOver(UIElement element, bool value)
-        {
-            element.SetValue(IsHandOverProperty, value);
-        }
-
-        public static bool GetIsHandOver(UIElement element)
-        {
-            return (bool)element.GetValue(IsHandOverProperty);
-        }
-    }
+    
     public partial class MainWindow : Window {
 
         private KinectSensorChooser sensorChooser;
+
+        KinectRegion[] kinectRegions;
 
         public MainWindow()
         {
             InitializeComponent();
             Loaded += OnLoaded;
 
-            Extensions.SetIsHandOver(buttonA, true);
+            kinectRegionMenu.Visibility = Visibility.Visible;
+            kinectRegionHelp.Visibility = Visibility.Hidden;
+            kinectRegionGame.Visibility = Visibility.Hidden;
+            kinectRegions =  new KinectRegion[3];
 
-            kinectHoverButton kinectHoverButtonA = new kinectHoverButton();
+            kinectRegions[0] = kinectRegionMenu;
+            kinectRegions[1] = kinectRegionHelp;
+            kinectRegions[2] = kinectRegionGame;
 
-            buttonStack.Children.Add(kinectHoverButtonA);
+            Brush boxcolour = Brushes.Black;
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
 
+                    kinectHoverBox newKinectHoverBox = new kinectHoverBox();
+
+                    //newKinectHoverBox.SetCurrentValue(newKinectHoverBox.DependencyObjectType., boxcolour);
+
+                    chessgrid.Children.Add(newKinectHoverBox);
+
+                }
+            }
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
@@ -98,9 +101,29 @@ namespace ChessGame {
                     // E.g.: sensor might be abruptly unplugged.
                 }
             }
-
             if (!error) {
-                kinectRegion.KinectSensor = args.NewSensor;
+                for (int i = 0; i < kinectRegions.Count(); i++) { 
+                    kinectRegions[i].KinectSensor = args.NewSensor;
+                }
+            }
+        }
+
+
+        public void checkButtonPresses(kinectHoverButton button)
+        {
+            Console.WriteLine(button.Name);
+            if (kinectRegionMenu.Visibility == Visibility.Visible) { 
+                if (button.Name == "startbutton") {
+                    kinectRegionMenu.Visibility = Visibility.Hidden;
+                    kinectRegionHelp.Visibility = Visibility.Hidden;
+                    kinectRegionGame.Visibility = Visibility.Visible;
+                } else if (button.Name == "helpbutton") {
+
+                } else if (button.Name == "closebutton") {
+
+                } else {
+
+                }
             }
         }
     }
