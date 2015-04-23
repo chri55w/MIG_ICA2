@@ -43,17 +43,6 @@ namespace ChessGame {
 
         
         #region Event Listeners
-            protected override void OnMouseEnter(System.Windows.Input.MouseEventArgs e)
-        {
-            base.OnMouseEnter(e);
-            SetIsHandOver(this, true);
-        }
-
-            protected override void OnMouseLeave(System.Windows.Input.MouseEventArgs e)
-        {
-            base.OnMouseLeave(e); 
-            SetIsHandOver(this, false);
-        }
 
             private void OnHandPointerEnter(object sender, HandPointerEventArgs e) {
                 if (!e.HandPointer.IsPrimaryHandOfUser || !e.HandPointer.IsPrimaryUser) {

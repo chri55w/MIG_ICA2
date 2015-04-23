@@ -13,6 +13,7 @@ namespace ChessGame {
     class kinectHoverBox : KinectButtonBase {
 
         private HandPointer activeHandpointer;
+        public string boxCoordTag;
 
         #region Dependancy Properties
             public static readonly DependencyProperty IsHandOverProperty = DependencyProperty.RegisterAttached("IsHandOver", typeof(bool), typeof(kinectHoverBox), new PropertyMetadata(default(bool)));
@@ -26,7 +27,7 @@ namespace ChessGame {
             }
 
 
-            public static readonly DependencyProperty ColourProperty = DependencyProperty.RegisterAttached("RColour", typeof(Brush), typeof(kinectHoverButton), new PropertyMetadata(default(Brush)));
+            public static DependencyProperty ColourProperty = DependencyProperty.RegisterAttached("RColour", typeof(Brush), typeof(kinectHoverButton), new PropertyMetadata(Brushes.AntiqueWhite));
 
             public static void SetRColour(UIElement element, Brush value)
             {
@@ -39,24 +40,18 @@ namespace ChessGame {
             }
         #endregion
 
-        public kinectHoverBox() {
+        public kinectHoverBox(string boxTag) {
             this.InitializeKinectHoverBox();
+            boxCoordTag = boxTag;
         }
-        private void InitializeKinectHoverBox() {
+        public void InitializeKinectHoverBox() {
             KinectRegion.AddHandPointerEnterHandler(this, this.OnHandPointerEnter);
             KinectRegion.AddHandPointerLeaveHandler(this, this.OnHandPointerLeave);
+            KinectRegion.AddHandPointerGripHandler(this, this.gripObject);
+            KinectRegion.AddHandPointerGripReleaseHandler(this, this.releaseObject);
         }
         
         #region Event Listeners
-            protected override void OnMouseEnter(System.Windows.Input.MouseEventArgs e) {
-                base.OnMouseEnter(e);
-                SetIsHandOver(this, true);
-            }
-
-            protected override void OnMouseLeave(System.Windows.Input.MouseEventArgs e) {
-                base.OnMouseLeave(e); 
-                SetIsHandOver(this, false);
-            }
 
             private void OnHandPointerEnter(object sender, HandPointerEventArgs e) {
                 if (!e.HandPointer.IsPrimaryHandOfUser || !e.HandPointer.IsPrimaryUser) {
@@ -74,6 +69,25 @@ namespace ChessGame {
 
                 this.activeHandpointer = null;
                 SetIsHandOver(this, false);
+            }
+            
+
+            private void gripObject(object sender, HandPointerEventArgs e) {
+                if (this.activeHandpointer == e.HandPointer) {
+                    if (!this.activeHandpointer.IsInGripInteraction) {
+                        this.activeHandpointer.IsInGripInteraction = true;
+                        var main = Application.Current.MainWindow as MainWindow;
+                        main.grabObject(boxCoordTag);
+                        Console.WriteLine("gripObject");
+                    }
+                }
+            }
+
+            private void releaseObject(object sender, HandPointerEventArgs e) {
+                if (this.activeHandpointer == e.HandPointer) {
+                    this.activeHandpointer.IsInGripInteraction = false;
+                    Console.WriteLine("releaseObject");
+                }
             }
         #endregion
     }

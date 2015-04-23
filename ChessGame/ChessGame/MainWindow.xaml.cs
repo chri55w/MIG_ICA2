@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 using Microsoft.Kinect.Toolkit.Controls;
+using Microsoft.Speech.AudioFormat;
+using Microsoft.Speech.Recognition;
 
 using System.Globalization;
 
@@ -25,6 +27,11 @@ namespace ChessGame {
     public partial class MainWindow : Window {
 
         private KinectSensorChooser sensorChooser;
+        string[] gridDataX = new string[8] { "A", "B", "C", "D", "E", "F", "G", "H" };
+        string[] gridDataY = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
+
+
+        private SpeechRecognitionEngine speechEngine;
 
         KinectRegion[] kinectRegions;
 
@@ -42,18 +49,16 @@ namespace ChessGame {
             kinectRegions[1] = kinectRegionHelp;
             kinectRegions[2] = kinectRegionGame;
 
-            Brush boxcolour = Brushes.Black;
-            for (int i = 0; i < 8; i++) {
-                for (int j = 0; j < 8; j++) {
+            for (int y = 7; y >= 0; y--) {
+                for (int x = 0; x < 8; x++) {
 
-                    kinectHoverBox newKinectHoverBox = new kinectHoverBox();
-
-                    //newKinectHoverBox.SetCurrentValue(newKinectHoverBox.DependencyObjectType., boxcolour);
-
+                    kinectHoverBox newKinectHoverBox = new kinectHoverBox(gridDataX[x] + gridDataY[y]);
+                    
                     chessgrid.Children.Add(newKinectHoverBox);
 
                 }
             }
+            chessBoardImg.Source = new CroppedBitmap(new BitmapImage(new Uri(@"../../imgs/chessboard.fw.png", UriKind.Relative)), new Int32Rect(0, 0, 800, 800));
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
@@ -125,6 +130,10 @@ namespace ChessGame {
 
                 }
             }
+        }
+        public void grabObject(string boxLoc)
+        {
+            Console.WriteLine(boxLoc);
         }
     }
 }
