@@ -94,6 +94,7 @@
             <Grid>
                 <Image x:Name="chessBoardImg" Width="800" Height="800"/>
                 <WrapPanel HorizontalAlignment="Center" Height="800" VerticalAlignment="Center" Width="800" Name="chessgrid"/>
+                <Canvas Name="GameCanvas" Width="800" Height="800"/>
             </Grid>
         </k:KinectRegion>
     </Grid>

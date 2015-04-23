@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+
 
 namespace ChessGame {
     class ChessBoard {
         ChessPeice[,] boardPeices;
 
-        public ChessBoard() {
+        public ChessBoard(Canvas gameCanvas) {
             boardPeices = new ChessPeice[8, 8];
-            populateChessPeices();
+            populateChessPeices(gameCanvas);
         }
 
-        void populateChessPeices() {
+        void populateChessPeices(Canvas gameCanvas) {
             boardPeices[0, 0] = new ChessPeice("RookB");
             boardPeices[1, 0] = new ChessPeice("BishopB");
             boardPeices[2, 0] = new ChessPeice("KnightB");
@@ -72,16 +74,25 @@ namespace ChessGame {
             boardPeices[5, 6] = new ChessPeice("PawnW");
             boardPeices[6, 6] = new ChessPeice("PawnW");
             boardPeices[7, 6] = new ChessPeice("PawnW");
-            boardPeices[0, 0] = new ChessPeice("RookW");
-            boardPeices[1, 0] = new ChessPeice("BishopW");
-            boardPeices[2, 0] = new ChessPeice("KnightW");
-            boardPeices[3, 0] = new ChessPeice("QueenW");
-            boardPeices[4, 0] = new ChessPeice("KingW");
-            boardPeices[5, 0] = new ChessPeice("KnightW");
-            boardPeices[6, 0] = new ChessPeice("BishopW");
-            boardPeices[7, 0] = new ChessPeice("RookW");
+            boardPeices[0, 7] = new ChessPeice("RookW");
+            boardPeices[1, 7] = new ChessPeice("BishopW");
+            boardPeices[2, 7] = new ChessPeice("KnightW");
+            boardPeices[3, 7] = new ChessPeice("QueenW");
+            boardPeices[4, 7] = new ChessPeice("KingW");
+            boardPeices[5, 7] = new ChessPeice("KnightW");
+            boardPeices[6, 7] = new ChessPeice("BishopW");
+            boardPeices[7, 7] = new ChessPeice("RookW");
 
-
+            for (int y = 7; y >= 0 ; y--) {
+                for (int x = 7; x >= 0; x--) {
+                    Image thisChessImage = boardPeices[7-x, 7-y].peiceImage;
+                    Canvas.SetLeft(thisChessImage, x * 100 + 10);
+                    Canvas.SetRight(thisChessImage, x * 100 + 90);
+                    Canvas.SetBottom(thisChessImage, y * 100 + 90);
+                    Canvas.SetTop(thisChessImage, y * 100+ 10);
+                    gameCanvas.Children.Add(thisChessImage);
+                }
+            }
         }
 
         int ConvertGridIDToIDX(string gridID) {

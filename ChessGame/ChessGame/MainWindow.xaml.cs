@@ -56,8 +56,11 @@ namespace ChessGame {
                 }
             }
             chessBoardImg.Source = new CroppedBitmap(new BitmapImage(new Uri(@"../../imgs/chessboard.fw.png", UriKind.Relative)), new Int32Rect(0, 0, 800, 800));
+            
+            gameBoard = new ChessBoard(GameCanvas);
 
-            gameBoard = new ChessBoard();
+            int i = 0;
+
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {

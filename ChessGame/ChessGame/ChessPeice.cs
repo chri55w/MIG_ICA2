@@ -13,11 +13,14 @@ namespace ChessGame {
     class ChessPeice {
 
         private string peiceType;
-        Image peiceImage =  new Image();
+        public Image peiceImage = new Image();
 
         public ChessPeice(string type) {
             peiceType = type;
-            peiceImage.Source = new CroppedBitmap(new BitmapImage(new Uri("../../imgs/peices" + type + ".png", UriKind.Relative)), new Int32Rect(0, 0, 800, 800));
+            peiceImage.Width = 80;
+            peiceImage.Height = 80;
+            peiceImage.Source = new CroppedBitmap(new BitmapImage(new Uri("../../imgs/peices/" + type + ".png", UriKind.Relative)), new Int32Rect(0, 0, 80, 80));
+            
         }
     }
 }
