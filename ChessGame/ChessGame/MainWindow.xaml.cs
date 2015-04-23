@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Speech.Recognition;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 using Microsoft.Kinect.Toolkit.Controls;
@@ -34,9 +33,7 @@ namespace ChessGame {
 
         KinectRegion[] kinectRegions;
 
-
-        private readonly SpeechRecognitionEngine recogniser;
-        private string utterance;
+        SpeechRecognition speechRec;
 
         public MainWindow()
         {
@@ -65,15 +62,8 @@ namespace ChessGame {
             
             gameBoard = new ChessBoard(GameCanvas);
 
-            SpeechRecognitionEngine recogniser = new SpeechRecognitionEngine();
-            recogniser.SetInputToDefaultAudioDevice();
+            speechRec = new SpeechRecognition(this);
 
-            recogniser.LoadGrammar(new DictationGrammar());
-
-            recogniser.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(SpeechRecognizedHandler);
-
-            //THIS BREAKS THE SYSTEM.
-            //recogniser.RecognizeAsync(RecognizeMode.Multiple);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
@@ -158,23 +148,6 @@ namespace ChessGame {
                 grippedObject = "";
             }
         }
-        
-        
-        //public string WaitFor()
-        //{
-        //    recogniser.SpeechRecognized += this.SpeechRecognizedHandler;
-        //    while (utterance == null)
-        //    {
-        //        recogniser.Recognize();
-        //    }
-        //    recogniser.SpeechRecognized -= this.SpeechRecognizedHandler;
 
-        //    return utterance;
-        //}
-
-        public void SpeechRecognizedHandler(object sender, SpeechRecognizedEventArgs args)
-        {
-            //Console.WriteLine("Recognized text: " + args.Result.Text);
-        }
     }
 }

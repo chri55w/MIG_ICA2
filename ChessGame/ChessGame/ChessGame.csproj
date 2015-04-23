@@ -71,6 +71,7 @@
     </ApplicationDefinition>
     <Compile Include="ChessBoard.cs" />
     <Compile Include="ChessPeice.cs" />
+    <Compile Include="SpeechRecognition.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
