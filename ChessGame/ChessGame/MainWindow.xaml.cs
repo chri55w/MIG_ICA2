@@ -20,53 +20,53 @@ using System.Globalization;
 
 
 namespace ChessGame {
-    
+
     public partial class MainWindow : Window {
 
         private KinectSensorChooser sensorChooser;
-        string[] gridDataX = new string[8] { "A", "B", "C", "D", "E", "F", "G", "H" };
-        string[] gridDataY = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
 
+        //object grabbed using kinect gestures identified by its grid data
         string grippedObject = "";
 
+        //chess board to hold all peices.
         ChessBoard gameBoard;
 
-        KinectRegion[] kinectRegions;
-
+        //speech recognition object.
         SpeechRecognition speechRec;
 
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
             Loaded += OnLoaded;
 
             kinectRegionMenu.Visibility = Visibility.Visible;
-            kinectRegionHelp.Visibility = Visibility.Hidden;
             kinectRegionGame.Visibility = Visibility.Hidden;
-            kinectRegions =  new KinectRegion[3];
 
-            kinectRegions[0] = kinectRegionMenu;
-            kinectRegions[1] = kinectRegionHelp;
-            kinectRegions[2] = kinectRegionGame;
+            //Data used for populating the grid data
+            string[] gridDataX = new string[8] { "A", "B", "C", "D", "E", "F", "G", "H" };
+            string[] gridDataY = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
 
+            //Populate wrap panel with hover icons to represent the hand position
             for (int y = 7; y >= 0; y--) {
                 for (int x = 0; x < 8; x++) {
 
                     kinectHoverBox newKinectHoverBox = new kinectHoverBox(gridDataX[x] + gridDataY[y]);
-                    
-                    chessgrid.Children.Add(newKinectHoverBox);
 
+                    chessgrid.Children.Add(newKinectHoverBox);
                 }
             }
+            //load in the chessboard image
             chessBoardImg.Source = new CroppedBitmap(new BitmapImage(new Uri(@"../../imgs/chessboard.fw.png", UriKind.Relative)), new Int32Rect(0, 0, 800, 800));
-            
+
+            //initialise the chessboard
             gameBoard = new ChessBoard(GameCanvas);
 
-            speechRec = new SpeechRecognition(this);
+            //initialise the speech recognition
+            speechRec = new SpeechRecognition();
 
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
+            //load the kinect sensor.
             this.sensorChooser = new KinectSensorChooser();
             this.sensorChooser.KinectChanged += SensorChooserOnKinectChanged;
             this.sensorChooserUi.KinectSensorChooser = this.sensorChooser;
@@ -103,51 +103,59 @@ namespace ChessGame {
                         args.NewSensor.SkeletonStream.EnableTrackingInNearRange = false;
                         error = true;
                     }
-                }
-                catch (InvalidOperationException)
-                {
+                } catch (InvalidOperationException) {
                     error = true;
                     // KinectSensor might enter an invalid state while enabling/disabling streams or stream features.
                     // E.g.: sensor might be abruptly unplugged.
                 }
             }
             if (!error) {
-                for (int i = 0; i < kinectRegions.Count(); i++) { 
-                    kinectRegions[i].KinectSensor = args.NewSensor;
-                }
+                kinectRegionMenu.KinectSensor = args.NewSensor;
+                kinectRegionGame.KinectSensor = args.NewSensor;
             }
         }
 
 
-        public void checkButtonPresses(kinectHoverButton button)
-        {
+        public void checkButtonPresses(kinectHoverButton button) {
+            //Write the button name to console
             Console.WriteLine(button.Name);
-            if (kinectRegionMenu.Visibility == Visibility.Visible) { 
+            //if the menu region is visible then button should be a menu button.
+            if (kinectRegionMenu.Visibility == Visibility.Visible) {
+                //handle button types
                 if (button.Name == "startbutton") {
                     kinectRegionMenu.Visibility = Visibility.Hidden;
-                    kinectRegionHelp.Visibility = Visibility.Hidden;
                     kinectRegionGame.Visibility = Visibility.Visible;
-                } else if (button.Name == "helpbutton") {
-
                 } else if (button.Name == "closebutton") {
-
+                    Console.WriteLine("Exit Button Pressed");
+                    this.Close();
                 } else {
-
+                    Console.WriteLine("Unknown Button Press");
+                    //Unrecognised Button Call
                 }
             }
         }
-        public void grabObject(string boxLoc)
-        {
+        public void grabObject(string boxLoc) {
+            //Identify the gridId of the gripped object
             grippedObject = boxLoc;
         }
-        public void releaseObject(string boxLoc)
-        {
-            if (grippedObject != "")
-            {
+        public void releaseObject(string boxLoc) {
+            //if gripped object is set then attempt to move the gripped object to the release position.
+            if (grippedObject != "") {
                 Console.WriteLine("Moving " + grippedObject + " to " + boxLoc);
+                gameBoard.swapPieces(grippedObject, boxLoc, GameCanvas);
+                //reset the gripped object.
                 grippedObject = "";
             }
         }
-
+        public void tryMovePeice(string peiceA, string peiceB) {
+            //swap the chess board peices.
+            gameBoard.swapPieces(peiceA, peiceB, GameCanvas);
+        }
+        public void pressStart() {
+            if (kinectRegionMenu.Visibility == Visibility.Visible) {
+                kinectRegionMenu.Visibility = Visibility.Hidden;
+                kinectRegionGame.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

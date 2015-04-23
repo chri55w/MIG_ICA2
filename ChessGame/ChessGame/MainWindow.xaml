@@ -74,20 +74,12 @@
             <Grid>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Name="buttonStack">
                     <local:kinectHoverButton x:Name="startbutton">
-                        <TextBlock>BEGIN!</TextBlock>
-                    </local:kinectHoverButton>
-                    <local:kinectHoverButton x:Name="helpbutton">
-                        <TextBlock>INSTRUCTIONS!</TextBlock>
+                        <TextBlock>START!</TextBlock>
                     </local:kinectHoverButton>
                     <local:kinectHoverButton x:Name="closebutton">
                         <TextBlock>EXIT!</TextBlock>
                     </local:kinectHoverButton>
                 </StackPanel>
-            </Grid>
-        </k:KinectRegion>
-        <k:KinectRegion Name="kinectRegionHelp" Margin="10">
-            <Grid>
-
             </Grid>
         </k:KinectRegion>
         <k:KinectRegion Name="kinectRegionGame" Margin="10">

@@ -11,18 +11,20 @@ namespace ChessGame {
         ChessPeice[,] boardPeices;
 
         public ChessBoard(Canvas gameCanvas) {
+            //initialise, populate and draw all peices
             boardPeices = new ChessPeice[8, 8];
-            populateChessPeices(gameCanvas);
+            populateChessPeices();
+            reDrawBoard(gameCanvas);
         }
-
-        void populateChessPeices(Canvas gameCanvas) {
+        //hard coded chess start positions.
+        void populateChessPeices() {
             boardPeices[0, 0] = new ChessPeice("RookB");
-            boardPeices[1, 0] = new ChessPeice("BishopB");
-            boardPeices[2, 0] = new ChessPeice("KnightB");
+            boardPeices[1, 0] = new ChessPeice("KnightB");
+            boardPeices[2, 0] = new ChessPeice("BishopB");
             boardPeices[3, 0] = new ChessPeice("QueenB");
             boardPeices[4, 0] = new ChessPeice("KingB");
-            boardPeices[5, 0] = new ChessPeice("KnightB");
-            boardPeices[6, 0] = new ChessPeice("BishopB");
+            boardPeices[5, 0] = new ChessPeice("BishopB");
+            boardPeices[6, 0] = new ChessPeice("KnightB");
             boardPeices[7, 0] = new ChessPeice("RookB");
             boardPeices[0, 1] = new ChessPeice("PawnB");
             boardPeices[1, 1] = new ChessPeice("PawnB");
@@ -75,28 +77,54 @@ namespace ChessGame {
             boardPeices[6, 6] = new ChessPeice("PawnW");
             boardPeices[7, 6] = new ChessPeice("PawnW");
             boardPeices[0, 7] = new ChessPeice("RookW");
-            boardPeices[1, 7] = new ChessPeice("BishopW");
-            boardPeices[2, 7] = new ChessPeice("KnightW");
+            boardPeices[1, 7] = new ChessPeice("KnightW");
+            boardPeices[2, 7] = new ChessPeice("BishopW");
             boardPeices[3, 7] = new ChessPeice("QueenW");
             boardPeices[4, 7] = new ChessPeice("KingW");
-            boardPeices[5, 7] = new ChessPeice("KnightW");
-            boardPeices[6, 7] = new ChessPeice("BishopW");
+            boardPeices[5, 7] = new ChessPeice("BishopW");
+            boardPeices[6, 7] = new ChessPeice("KnightW");
             boardPeices[7, 7] = new ChessPeice("RookW");
+        }
 
-            for (int y = 7; y >= 0 ; y--) {
+        void reDrawBoard(Canvas gameCanvas) {
+            //clear all peices
+            gameCanvas.Children.Clear();
+            //redraw all peices
+            for (int y = 7; y >= 0; y--) {
                 for (int x = 7; x >= 0; x--) {
-                    Image thisChessImage = boardPeices[7-x, 7-y].peiceImage;
+                    Image thisChessImage = boardPeices[x, 7 - y].peiceImage;
                     Canvas.SetLeft(thisChessImage, x * 100 + 10);
                     Canvas.SetRight(thisChessImage, x * 100 + 90);
                     Canvas.SetBottom(thisChessImage, y * 100 + 90);
-                    Canvas.SetTop(thisChessImage, y * 100+ 10);
+                    Canvas.SetTop(thisChessImage, y * 100 + 10);
                     gameCanvas.Children.Add(thisChessImage);
                 }
             }
         }
 
-        int ConvertGridIDToIDX(string gridID) {
+        //swap two chess peices.
+        public void swapPieces(string peice1, string peice2, Canvas gameCanvas) {
+            //split peice positions and calclulate the offsets into the array
+            int offset1A = ConvertGridIDToIDX(peice1[0].ToString());
+            int offset1N = ConvertGridIDToIDX(peice1[1].ToString());
 
+            int offset2A = ConvertGridIDToIDX(peice2[0].ToString());
+            int offset2N = ConvertGridIDToIDX(peice2[1].ToString());
+
+            //make a copy of both peices
+            ChessPeice peiceA = boardPeices[offset1A, offset1N];
+            ChessPeice peiceB = boardPeices[offset2A, offset2N];
+
+            //assign the peices to the swapped peice
+            boardPeices[offset1A, offset1N] = peiceB;
+            boardPeices[offset2A, offset2N] = peiceA;
+
+            //re draw the board
+            reDrawBoard(gameCanvas);
+        }
+
+        int ConvertGridIDToIDX(string gridID) {
+            //calculate offsets into board peices using string / char.
             if (gridID == "1" || gridID == "A") {
                 return 0;
             } else if (gridID == "2" || gridID == "B") {
@@ -115,10 +143,6 @@ namespace ChessGame {
                 return 7;
             }
             return -1;
-
         }
-
-        
-
     }
 }
