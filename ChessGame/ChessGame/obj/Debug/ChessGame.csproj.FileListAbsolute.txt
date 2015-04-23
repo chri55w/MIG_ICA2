@@ -11,9 +11,6 @@ C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.Prope
 C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.csproj.GenerateResource.Cache
 C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.exe
 C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.pdb
-C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\bin\Debug\Microsoft.Kinect.Toolkit.Controls.dll
-C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\bin\Debug\Microsoft.Kinect.Toolkit.dll
-C:\Users\n3035136\Desktop\MIG_ICA2\ChessGame\ChessGame\bin\Debug\Microsoft.Kinect.Toolkit.Interaction.dll
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\bin\Debug\ChessGame.exe.config
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.exe
 C:\Users\Chris\Desktop\MIG_ICA2\ChessGame\ChessGame\obj\Debug\ChessGame.pdb

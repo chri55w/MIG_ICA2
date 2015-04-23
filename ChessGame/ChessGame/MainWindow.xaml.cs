@@ -16,8 +16,6 @@ using System.Windows.Shapes;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 using Microsoft.Kinect.Toolkit.Controls;
-using Microsoft.Speech.AudioFormat;
-using Microsoft.Speech.Recognition;
 
 using System.Globalization;
 
@@ -30,8 +28,7 @@ namespace ChessGame {
         string[] gridDataX = new string[8] { "A", "B", "C", "D", "E", "F", "G", "H" };
         string[] gridDataY = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
 
-
-        private SpeechRecognitionEngine speechEngine;
+        ChessBoard gameBoard;
 
         KinectRegion[] kinectRegions;
 
@@ -59,6 +56,8 @@ namespace ChessGame {
                 }
             }
             chessBoardImg.Source = new CroppedBitmap(new BitmapImage(new Uri(@"../../imgs/chessboard.fw.png", UriKind.Relative)), new Int32Rect(0, 0, 800, 800));
+
+            gameBoard = new ChessBoard();
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
