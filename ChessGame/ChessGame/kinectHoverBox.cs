@@ -86,6 +86,8 @@ namespace ChessGame {
             private void releaseObject(object sender, HandPointerEventArgs e) {
                 if (this.activeHandpointer == e.HandPointer) {
                     this.activeHandpointer.IsInGripInteraction = false;
+                    var main = Application.Current.MainWindow as MainWindow;
+                    main.releaseObject(boxCoordTag);
                     Console.WriteLine("releaseObject");
                 }
             }

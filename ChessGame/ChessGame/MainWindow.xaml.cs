@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Speech.Recognition;
 using Microsoft.Kinect;
 using Microsoft.Kinect.Toolkit;
 using Microsoft.Kinect.Toolkit.Controls;
@@ -28,9 +28,15 @@ namespace ChessGame {
         string[] gridDataX = new string[8] { "A", "B", "C", "D", "E", "F", "G", "H" };
         string[] gridDataY = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
 
+        string grippedObject = "";
+
         ChessBoard gameBoard;
 
         KinectRegion[] kinectRegions;
+
+
+        private readonly SpeechRecognitionEngine recogniser;
+        private string utterance;
 
         public MainWindow()
         {
@@ -59,8 +65,15 @@ namespace ChessGame {
             
             gameBoard = new ChessBoard(GameCanvas);
 
-            int i = 0;
+            SpeechRecognitionEngine recogniser = new SpeechRecognitionEngine();
+            recogniser.SetInputToDefaultAudioDevice();
 
+            recogniser.LoadGrammar(new DictationGrammar());
+
+            recogniser.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(SpeechRecognizedHandler);
+
+            //THIS BREAKS THE SYSTEM.
+            //recogniser.RecognizeAsync(RecognizeMode.Multiple);
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs) {
@@ -135,7 +148,33 @@ namespace ChessGame {
         }
         public void grabObject(string boxLoc)
         {
-            Console.WriteLine(boxLoc);
+            grippedObject = boxLoc;
+        }
+        public void releaseObject(string boxLoc)
+        {
+            if (grippedObject != "")
+            {
+                Console.WriteLine("Moving " + grippedObject + " to " + boxLoc);
+                grippedObject = "";
+            }
+        }
+        
+        
+        //public string WaitFor()
+        //{
+        //    recogniser.SpeechRecognized += this.SpeechRecognizedHandler;
+        //    while (utterance == null)
+        //    {
+        //        recogniser.Recognize();
+        //    }
+        //    recogniser.SpeechRecognized -= this.SpeechRecognizedHandler;
+
+        //    return utterance;
+        //}
+
+        public void SpeechRecognizedHandler(object sender, SpeechRecognizedEventArgs args)
+        {
+            //Console.WriteLine("Recognized text: " + args.Result.Text);
         }
     }
 }
